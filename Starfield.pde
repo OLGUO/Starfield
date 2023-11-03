@@ -1,19 +1,21 @@
 class Ball {
-  int myX, myY, myWidth, myHeight, mySpeed, myColor;
+  int myWidth, myHeight, myColor;
+  double myX, myY, mySpeed, myAngle;
   Ball() {
-  myX = (int)(Math.random()*1100)-150;
-  myY = (int)(Math.random()*600);
-  myWidth = 20;
-  myHeight = 10;
-  mySpeed = 2;
-  myColor = color(255,255,0);
+  myX = (Math.random()*1000);
+  myY = (Math.random()*1000);
+  myWidth = 30;
+  myHeight = 20;
+  mySpeed = (Math.random()*20)-10;
+  myAngle = (Math.random()*2*Math.PI);
+  myColor = color(((int)(Math.random()*255)),((int)(Math.random()*255)),((int)(Math.random()*255)));
   }
   
   
   
  void show() {
  fill(myColor);
- ellipse(myX, myY, myWidth, myHeight);
+ ellipse((float)myX, (float)myY, myWidth, myHeight);
  }
   
  void move() {
@@ -25,18 +27,18 @@ class Ball {
 
 class oddBall extends Ball {
    oddBall() {
-   myX = (int)(Math.random()*1100)-150;
-   myY = (int)(Math.random()*500);
-   myColor = color(255,0,0);
-   mySpeed = 10;
-   myWidth = 60;
-   myHeight = 30;
+   myX = (Math.random()*1000);
+   myY = (Math.random()*1000);
+   myColor = color(((int)(Math.random()*255)),((int)(Math.random()*255)),((int)(Math.random()*255)));
+   mySpeed = (Math.random()*10)+10;
+   myWidth = 100;
+   myHeight = 80;
    }
 }
 
-Ball[] bob = new Ball[200];
+Ball[] bob = new Ball[500];
 void setup() {
-size(800, 600);
+size(1000, 1000);
 for(int i = 0; i < bob.length; i++){
 bob[i] = new Ball();
 bob[0] = new oddBall();
@@ -51,6 +53,4 @@ for(int i = 0; i < bob.length; i++){
 bob[i].show();
 bob[i].move();
   }
- fill(255,0,0);
- rect(700,0,100,600);
 }
